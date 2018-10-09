@@ -21,12 +21,13 @@ namespace EntityFrameworkApp.Model
         [Column("LastName")]
         public string LastName { get; set; }
         public int Age { get; set; }
-
-        public ICollection<Address> Address { get; set; }
+        [MaxLength(1), MinLength(1)]
+        public string Sex { get; set; }
+        public virtual ICollection<Address> Addresses { get; set; }
 
         public Person()
         {
-            Address = new List<Address>();
+            Addresses = new List<Address>();
         }
     }
 }

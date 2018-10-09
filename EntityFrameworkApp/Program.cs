@@ -16,26 +16,43 @@ namespace EntityFrameworkApp
                 var address = new Address
                 {
                     StreetNumber = 32,
-                    City = "Marseille",
-                    CodeP = "13015"
+                    City = "Gabes",
+                    CodeP = "6000"
                 };
                 var person = new Person()
                 {
-                    FirstName = "Ernest",
-                    LastName = "Jacques",
-                    Age = 45
+                    FirstName = "Refka",
+                    LastName = "Benmahmoud",
+                    Age = 26
                 };
-                person.Address.Add(address);
+               person.Addresses.Add(address);
 
-                // on persiste la personne
-                model.Person.Add(person);
-                model.SaveChanges();
-                // on recupere le contenu de l’entity Personne
-                var persoQuery = from perso in model.Person
+                // we persist the person
+              //  model.Person.Add(person);
+               // model.SaveChanges();
+
+                // we get the content of entity Person
+                var persoQuery = from perso in model.Person    
                                  select perso;
-                // on affiche la personne ainsi que sa premiere adresse
+                // we display the person and his first address
                 foreach (var elt in persoQuery)
-                    Console.WriteLine($"Bonjour {elt.LastName} {elt.FirstName} de { elt.Address.First<Address>().City} ");
+                   // Console.WriteLine($"Hello {elt.LastName} {elt.FirstName} from { elt.Addresses.First<Address>().City} ");
+                Console.WriteLine($"Hello {elt.LastName} {elt.FirstName} ");
+
+
+
+                // To edit
+                var personToBeDeleted = (from p in model.Person
+                                         where p.LastName.Equals("Benmahmoud")
+                                         select p).First();
+                personToBeDeleted.FirstName = "Refka";
+                model.SaveChanges();
+
+                //To delete
+               // Person p2 = model.Person.First(perso => perso.
+                //Id == 1);
+                //model.Person.Remove(p2);
+                //model.SaveChanges();
             }
             Console.ReadKey();
 

@@ -52,6 +52,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201810082157264_InitialCreate.cs" />
+    <Compile Include="Migrations\201810082157264_InitialCreate.Designer.cs">
+      <DependentUpon>201810082157264_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810091016549_add_column_sex_person.cs" />
+    <Compile Include="Migrations\201810091016549_add_column_sex_person.Designer.cs">
+      <DependentUpon>201810091016549_add_column_sex_person.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model1.cs" />
     <Compile Include="Model\Address.cs" />
     <Compile Include="Model\Person.cs" />
@@ -63,6 +72,14 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201810082157264_InitialCreate.resx">
+      <DependentUpon>201810082157264_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810091016549_add_column_sex_person.resx">
+      <DependentUpon>201810091016549_add_column_sex_person.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
